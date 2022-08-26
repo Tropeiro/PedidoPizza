@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Pagamento extends AppCompatActivity {
 
@@ -67,12 +69,19 @@ public class Pagamento extends AppCompatActivity {
             }
         });
 
+        swEntrega.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(swEntrega.isChecked())
+                    Toast.makeText(getApplicationContext(), "Pedido para Entrega", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getApplicationContext(), "Pedido para buscar no local", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
-
-
             }
         });
     }
